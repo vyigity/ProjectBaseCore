@@ -2,25 +2,6 @@
 
 ProjectBase (PB) is a Utility and Data Access library. PB designed with a database independent interface oriented approach to ensure extentibility and reliablity. PB's codes can be changed or manipulated easily.
 
-* appsettings.json file must be configured as below
-
-{
-  "DEFAULT_DB": "Context",
-  "ContextProviderName": "System.Data.SqlClient",
-  "ConnectionStrings": {
-    "Context": "Server=MyServer;Database=MyDb1;User Id=TestUser;Password=TestPswd;MultipleActiveResultSets=true"
-  }
-}
-
-* Provider names can be set as followings
-Oracle: Oracle.ManagedDataAccess.Client
-Sql Server: System.Data.SqlClient
-MySql: MySql.Data.MySqlClient
-OleDb: System.Data.OleDb
-Postgre: Npgsql
-
-* Provider names must be formatted like "{ConnectionStringName}ProviderName"
-
 PB has 3 type of data access: 
 
 * Automatic Connection Management: Using single connection object and while executing a command, connection is opened and closed automatically.
