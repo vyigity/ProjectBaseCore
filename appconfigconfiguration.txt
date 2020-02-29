@@ -1,0 +1,18 @@
+* appsettings.json file must be configured as below
+
+{
+  "DEFAULT_DB": "Context",
+  "ContextProviderName": "System.Data.SqlClient",
+  "ConnectionStrings": {
+    "Context": "Server=MyServer;Database=MyDb1;User Id=TestUser;Password=TestPswd;MultipleActiveResultSets=true"
+  }
+}
+
+* Provider names can be set as followings
+Oracle: Oracle.ManagedDataAccess.Client
+Sql Server: System.Data.SqlClient
+MySql: MySql.Data.MySqlClient
+OleDb: System.Data.OleDb
+Postgre: Npgsql
+
+* Provider names must be formatted like "{ConnectionStringName}ProviderName"
