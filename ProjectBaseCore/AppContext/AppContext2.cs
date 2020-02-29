@@ -32,9 +32,9 @@ namespace ProjectBaseCore.AppContext
         {
             get
             {
-                if (ConfigurationManager.GetSection("DEFAULT_DB") != null)
+                if (ConfigurationManager.GetSection("DefaultDb") != null)
                 {
-                    return ConfigurationManager.GetSection("DEFAULT_DB");
+                    return ConfigurationManager.GetSection("DefaultDb");
                 }
                 else
                     return "Context";
