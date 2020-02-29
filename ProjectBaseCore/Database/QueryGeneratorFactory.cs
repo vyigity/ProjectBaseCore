@@ -15,7 +15,6 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public static IQueryGenerator GetDbObject()
         {
-            string conStr = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
             string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
 
             if (providerName == "Oracle.ManagedDataAccess.Client")
@@ -43,7 +42,6 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public static IQueryGenerator GetDbObject(ParameterMode ParameterProcessingMode)
         {
-            string conStr = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
             string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
 
             if (providerName == "Oracle.ManagedDataAccess.Client")

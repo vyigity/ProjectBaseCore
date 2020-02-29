@@ -13,7 +13,8 @@
     <PackageIconUrl />
     <PackageTags>DataAccessLayer Utility DAL VeriErişimKatmanı YazılımDestek</PackageTags>
     <PackageReleaseNotes>.Net Core version of classic ProjectBase. It's not fully compatible with ProjectBase.</PackageReleaseNotes>
-    <NeutralLanguage />
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

@@ -19,13 +19,8 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public static IDatabase2 GetDbObject()
         {
-            string conStr = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
             string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
 
-            //if (conStr.ProviderName == "Oracle.DataAccess.Client")
-            //{
-            //    return new OracleDatabase2();
-            //}
             if (providerName == "Oracle.ManagedDataAccess.Client")
             {
                 return new OracleManagedDatabase2();
@@ -54,7 +49,6 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public static IDatabase2 GetDbObject(DbSettings setting)
         {
-            string conStr = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
             string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
   
             if (providerName == "Oracle.ManagedDataAccess.Client")
@@ -85,7 +79,6 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public static IDatabase2 GetDbObject(DbSettings setting, IsolationLevel isolation)
         {
-            string conStr = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
             string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
 
             if (providerName == "Oracle.ManagedDataAccess.Client")
