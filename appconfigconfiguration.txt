@@ -1,7 +1,7 @@
 * appsettings.json file must be configured as below
 
 {
-  "DEFAULT_DB": "Context",
+  "DefaultDb": "Context",
   "ContextProviderName": "System.Data.SqlClient",
   "ConnectionStrings": {
     "Context": "Server=MyServer;Database=MyDb1;User Id=TestUser;Password=TestPswd;MultipleActiveResultSets=true"
