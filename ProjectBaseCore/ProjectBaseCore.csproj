@@ -6,7 +6,14 @@
     <Company>vyigity</Company>
     <Copyright>vyigity</Copyright>
     <PackageId>vyigity.ProjectBaseCore</PackageId>
-    <Description>.Net Core version of classic ProjectBase. It's not fully compatible with ProjectBase.</Description>
+    <Description>ProjectBase is a .NET toolkit for rapid application development. This project includes basic, extendible, interface oriented low level data access and utility codes. Aim of this project is to start a software project in a immediate and reliable way using database independent code interfaces and PL/SQL like transaction management. PB supports Oracle (Managed Provider), SqlServer, MySql, Oledb and PostgreSQL. PB supports asynchronous programming.</Description>
+    <RepositoryUrl>https://github.com/vyigity/ProjectBaseCore</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/vyigity/ProjectBaseCore</PackageProjectUrl>
+    <PackageIcon>PBicon.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageTags>DataAccessLayer Utility DAL VeriErişimKatmanı YazılımDestek</PackageTags>
+    <PackageReleaseNotes>.Net Core version of classic ProjectBase. It's not fully compatible with ProjectBase.</PackageReleaseNotes>
+    <NeutralLanguage />
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +26,23 @@
     <PackageReference Include="System.AppContext" Version="4.3.0" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="readme.md">
+    <Pack>true</Pack>
+    <PackagePath>\</PackagePath>
+  </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="PBicon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
