@@ -37,8 +37,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
-                adap.Fill(dt);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
+                adapter.Fill(dt);
                 return dt;
             }
             catch (OleDbException ex)
@@ -66,8 +66,8 @@ namespace ProjectBaseCore.Database
             {
                 GetConnection();
                 query.Connection = myCon;
-                OleDbDataAdapter adap = new OleDbDataAdapter(command);
-                adap.Fill(dt);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                adapter.Fill(dt);
                 return dt;
             }
             catch (OleDbException ex)
@@ -91,8 +91,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
-                adap.Fill(set, table);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
+                adapter.Fill(set, table);
             }
             catch (OleDbException ex)
             {
@@ -118,8 +118,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(command);
-                adap.Fill(set, table);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                adapter.Fill(set, table);
             }
             catch (OleDbException ex)
             {
@@ -142,8 +142,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
-                adap.Fill(table);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
+                adapter.Fill(table);
 
             }
             catch (OleDbException ex)
@@ -170,8 +170,8 @@ namespace ProjectBaseCore.Database
             {
                 GetConnection();
                 query.Connection = myCon;
-                OleDbDataAdapter adap = new OleDbDataAdapter(command);
-                adap.Fill(table);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                adapter.Fill(table);
 
             }
             catch (OleDbException ex)
@@ -580,8 +580,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
-                return Task.Run(() => { adap.Fill(dt); return dt; });
+                OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
+                return Task.Run(() => { adapter.Fill(dt); return dt; });
             }
             catch (OleDbException ex)
             {
@@ -608,8 +608,8 @@ namespace ProjectBaseCore.Database
             {
                 GetConnection();
                 query.Connection = myCon;
-                OleDbDataAdapter adap = new OleDbDataAdapter(command);
-                return Task.Run(() => { adap.Fill(dt); return dt; });
+                OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(dt); return dt; });
             }
             catch (OleDbException ex)
             {
@@ -632,8 +632,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
-                return Task.Run(() => { adap.Fill(table); return table; });
+                OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
+                return Task.Run(() => { adapter.Fill(table); return table; });
             }
             catch (OleDbException ex)
             {
@@ -659,8 +659,8 @@ namespace ProjectBaseCore.Database
             {
                 GetConnection();
                 query.Connection = myCon;
-                OleDbDataAdapter adap = new OleDbDataAdapter(command);
-                return Task.Run(() => { adap.Fill(table); return table; });
+                OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(table); return table; });
             }
             catch (OleDbException ex)
             {
@@ -683,8 +683,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
-                return Task.Run(() => { adap.Fill(set, table); });
+                OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(query, myCon as OleDbConnection));
+                return Task.Run(() => { adapter.Fill(set, table); });
             }
             catch (OleDbException ex)
             {
@@ -710,8 +710,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                OleDbDataAdapter adap = new OleDbDataAdapter(command);
-                return Task.Run(() => { adap.Fill(set, table); });
+                OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(set, table); });
             }
             catch (OleDbException ex)
             {

@@ -37,8 +37,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
-                adap.Fill(dt);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
+                adapter.Fill(dt);
                 return dt;
             }
             catch (MySqlException ex)
@@ -55,19 +55,19 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns results as a data table object.
+        /// Executes a sql select command and returns results as a data table object.
         /// </summary>
         public override DataTable ExecuteQueryDataTable(IDbCommand query)
         {
             DataTable dt = new DataTable();
-            MySqlCommand Command = query as MySqlCommand;
+            MySqlCommand command = query as MySqlCommand;
 
             try
             {
                 GetConnection();
                 query.Connection = myCon;
-                MySqlDataAdapter adap = new MySqlDataAdapter(Command);
-                adap.Fill(dt);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dt);
                 return dt;
             }
             catch (MySqlException ex)
@@ -91,8 +91,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
-                adap.Fill(set, table);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
+                adapter.Fill(set, table);
             }
             catch (MySqlException ex)
             {
@@ -108,18 +108,18 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and fills a dataset object.
+        /// Executes a sql select command and fills a dataset object.
         /// </summary>
         public override void FillObject(DataSet set, string table, IDbCommand query)
         {
             query.Connection = myCon;
-            MySqlCommand Command = query as MySqlCommand;
+            MySqlCommand command = query as MySqlCommand;
 
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(Command);
-                adap.Fill(set, table);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(set, table);
             }
             catch (MySqlException ex)
             {
@@ -142,8 +142,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
-                adap.Fill(table);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
+                adapter.Fill(table);
 
             }
             catch (MySqlException ex)
@@ -160,18 +160,18 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and fills a data table object.
+        /// Executes a sql select command and fills a data table object.
         /// </summary>
         public override void FillObject(DataTable table, IDbCommand query)
         {
-            MySqlCommand Command = query as MySqlCommand;
+            MySqlCommand command = query as MySqlCommand;
 
             try
             {
                 GetConnection();
                 query.Connection = myCon;
-                MySqlDataAdapter adap = new MySqlDataAdapter(Command);
-                adap.Fill(table);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(table);
 
             }
             catch (MySqlException ex)
@@ -192,13 +192,13 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public override int ExecuteQuery(string query)
         {
-            MySqlCommand Command = null;
+            MySqlCommand command = null;
 
             try
             {
                 GetConnection();
-                Command = new MySqlCommand(query, myCon as MySqlConnection);
-                return Command.ExecuteNonQuery();
+                command = new MySqlCommand(query, myCon as MySqlConnection);
+                return command.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {
@@ -214,7 +214,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql Command and returns affected row count.
+        /// Executes a sql command and returns affected row count.
         /// </summary>
         public override int ExecuteQuery(IDbCommand query)
         {
@@ -242,12 +242,12 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public override object GetSingleValue(string query)
         {
-            MySqlCommand Command = null;
+            MySqlCommand command = null;
             try
             {
                 GetConnection();
-                Command = new MySqlCommand(query, myCon as MySqlConnection);
-                return Command.ExecuteScalar();
+                command = new MySqlCommand(query, myCon as MySqlConnection);
+                return command.ExecuteScalar();
             }
             catch (MySqlException ex)
             {
@@ -264,7 +264,7 @@ namespace ProjectBaseCore.Database
 
         }
         /// <summary>
-        /// Executes a sql select Command and returns results result as a single value.
+        /// Executes a sql select command and returns results result as a single value.
         /// </summary>
         public override object GetSingleValue(IDbCommand query)
         {
@@ -311,7 +311,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns a data reader object.
+        /// Executes a sql select command and returns a data reader object.
         /// </summary>
         public override IDataReader GetDataReader(IDbCommand query)
         {
@@ -372,7 +372,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns results as a desired type object.
+        /// Executes a sql select command and returns results as a desired type object.
         /// </summary>
         public override T GetObject<T>(IDbCommand query)
         {
@@ -458,7 +458,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns results as a list of desired type objects.
+        /// Executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         public override List<T> GetObjectList<T>(IDbCommand query)
         {
@@ -525,13 +525,13 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public Task<int> ExecuteQueryAsync(string query)
         {
-            MySqlCommand Command = null;
+            MySqlCommand command = null;
 
             try
             {
                 GetConnection();
-                Command = new MySqlCommand(query, myCon as MySqlConnection);
-                return Task.Run(() => { return Command.ExecuteNonQuery(); });
+                command = new MySqlCommand(query, myCon as MySqlConnection);
+                return Task.Run(() => { return command.ExecuteNonQuery(); });
             }
             catch (MySqlException ex)
             {
@@ -547,7 +547,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql Command and returns affected row count.
+        /// Asynchronously executes a sql command and returns affected row count.
         /// </summary>
         public Task<int> ExecuteQueryAsync(IDbCommand query)
         {
@@ -580,8 +580,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
-                return Task.Run(() => { adap.Fill(dt); return dt; });
+                MySqlDataAdapter adapter = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
+                return Task.Run(() => { adapter.Fill(dt); return dt; });
             }
             catch (MySqlException ex)
             {
@@ -597,19 +597,19 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a data table object.
+        /// Asynchronously executes a sql select command and returns results as a data table object.
         /// </summary>
         public Task<DataTable> ExecuteQueryDataTableAsync(IDbCommand query)
         {
             DataTable dt = new DataTable();
-            MySqlCommand Command = query as MySqlCommand;
+            MySqlCommand command = query as MySqlCommand;
 
             try
             {
                 GetConnection();
                 query.Connection = myCon;
-                MySqlDataAdapter adap = new MySqlDataAdapter(Command);
-                return Task.Run(() => { adap.Fill(dt); return dt; });
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(dt); return dt; });
             }
             catch (MySqlException ex)
             {
@@ -632,8 +632,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
-                return Task.Run(() => { adap.Fill(table); return table; });
+                MySqlDataAdapter adapter = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
+                return Task.Run(() => { adapter.Fill(table); return table; });
             }
             catch (MySqlException ex)
             {
@@ -649,18 +649,18 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and fills a dataset object.
+        /// Asynchronously executes a sql select command and fills a dataset object.
         /// </summary>
         public Task FillObjectAsync(DataTable table, IDbCommand query)
         {
-            MySqlCommand Command = query as MySqlCommand;
+            MySqlCommand command = query as MySqlCommand;
 
             try
             {
                 GetConnection();
                 query.Connection = myCon;
-                MySqlDataAdapter adap = new MySqlDataAdapter(Command);
-                return Task.Run(() => { adap.Fill(table); return table; });
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(table); return table; });
             }
             catch (MySqlException ex)
             {
@@ -683,8 +683,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
-                return Task.Run(() => { adap.Fill(set, table); });
+                MySqlDataAdapter adapter = new MySqlDataAdapter(new MySqlCommand(query, myCon as MySqlConnection));
+                return Task.Run(() => { adapter.Fill(set, table); });
             }
             catch (MySqlException ex)
             {
@@ -700,18 +700,18 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and fills a data table object.
+        /// Asynchronously executes a sql select command and fills a data table object.
         /// </summary>
         public Task FillObjectAsync(DataSet set, string table, IDbCommand query)
         {
             query.Connection = myCon;
-            MySqlCommand Command = query as MySqlCommand;
+            MySqlCommand command = query as MySqlCommand;
 
             try
             {
                 GetConnection();
-                MySqlDataAdapter adap = new MySqlDataAdapter(Command);
-                return Task.Run(() => { adap.Fill(set, table); });
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(set, table); });
             }
             catch (MySqlException ex)
             {
@@ -749,7 +749,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns a data reader object.
+        /// Asynchronously executes a sql select command and returns a data reader object.
         /// </summary>
         public Task<IDataReader> GetDataReaderAsync(IDbCommand query)
         {
@@ -816,7 +816,7 @@ namespace ProjectBaseCore.Database
             });
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a desired type object.
+        /// Asynchronously executes a sql select command and returns results as a desired type object.
         /// </summary>
         public Task<T> GetObjectAsync<T>(IDbCommand query)
         {
@@ -913,7 +913,7 @@ namespace ProjectBaseCore.Database
             });
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a list of desired type objects.
+        /// Asynchronously executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         public Task<List<T>> GetObjectListAsync<T>(IDbCommand query)
         {
@@ -968,12 +968,12 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public Task<object> GetSingleValueAsync(string query)
         {
-            MySqlCommand Command = null;
+            MySqlCommand command = null;
             try
             {
                 GetConnection();
-                Command = new MySqlCommand(query, myCon as MySqlConnection);
-                return Task.Run(() => { return Command.ExecuteScalar(); });
+                command = new MySqlCommand(query, myCon as MySqlConnection);
+                return Task.Run(() => { return command.ExecuteScalar(); });
             }
             catch (MySqlException ex)
             {
@@ -989,7 +989,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results result as a single value.
+        /// Asynchronously executes a sql select command and returns results result as a single value.
         /// </summary>
         public Task<object> GetSingleValueAsync(IDbCommand query)
         {

@@ -33,8 +33,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
-                adap.Fill(dt);
+                SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
+                adapter.Fill(dt);
                 return dt;
             }
             catch (SqlException ex)
@@ -51,20 +51,20 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns results as a data table object.
+        /// Executes a sql select command and returns results as a data table object.
         /// </summary>
         public override DataTable ExecuteQueryDataTable(IDbCommand query)
         {
             DataTable dt = new DataTable();
-            SqlCommand Command = query as SqlCommand;
+            SqlCommand command = query as SqlCommand;
 
             try
             {
                 GetConnection();
                 query.Transaction = tran;
                 query.Connection = myCon;
-                SqlDataAdapter adap = new SqlDataAdapter(Command);
-                adap.Fill(dt);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
                 return dt;
             }
             catch (SqlException ex)
@@ -88,8 +88,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
-                adap.Fill(set, table);
+                SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
+                adapter.Fill(set, table);
             }
             catch (SqlException ex)
             {
@@ -105,19 +105,19 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and fills a dataset object.
+        /// Executes a sql select command and fills a dataset object.
         /// </summary>
         public override void FillObject(DataSet set, string table, IDbCommand query)
         {
             query.Connection = myCon;
-            SqlCommand Command = query as SqlCommand;
+            SqlCommand command = query as SqlCommand;
 
             try
             {
                 GetConnection();
                 query.Transaction = tran;
-                SqlDataAdapter adap = new SqlDataAdapter(Command);
-                adap.Fill(set, table);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(set, table);
             }
             catch (SqlException ex)
             {
@@ -140,8 +140,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
-                adap.Fill(table);
+                SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
+                adapter.Fill(table);
             }
             catch (SqlException ex)
             {
@@ -157,19 +157,19 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and fills a data table object.
+        /// Executes a sql select command and fills a data table object.
         /// </summary>
         public override void FillObject(DataTable table, IDbCommand query)
         {
-            SqlCommand Command = query as SqlCommand;
+            SqlCommand command = query as SqlCommand;
 
             try
             {
                 GetConnection();
                 query.Transaction = tran;
                 query.Connection = myCon;
-                SqlDataAdapter adap = new SqlDataAdapter(Command);
-                adap.Fill(table);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(table);
 
             }
             catch (SqlException ex)
@@ -190,13 +190,13 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public override int ExecuteQuery(string query)
         {
-            SqlCommand Command = null;
+            SqlCommand command = null;
 
             try
             {
                 GetConnection();
-                Command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
-                return Command.ExecuteNonQuery();
+                command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
+                return command.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -212,7 +212,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql Command and returns affected row count.
+        /// Executes a sql command and returns affected row count.
         /// </summary>
         public override int ExecuteQuery(IDbCommand query)
         {
@@ -241,12 +241,12 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public override object GetSingleValue(string query)
         {
-            SqlCommand Command = null;
+            SqlCommand command = null;
             try
             {
                 GetConnection();
-                Command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
-                return Command.ExecuteScalar();
+                command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
+                return command.ExecuteScalar();
             }
             catch (SqlException ex)
             {
@@ -263,7 +263,7 @@ namespace ProjectBaseCore.Database
 
         }
         /// <summary>
-        /// Executes a sql select Command and returns results result as a single value.
+        /// Executes a sql select command and returns results result as a single value.
         /// </summary>
         public override object GetSingleValue(IDbCommand query)
         {
@@ -311,7 +311,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns a data reader object.
+        /// Executes a sql select command and returns a data reader object.
         /// </summary>
         public override IDataReader GetDataReader(IDbCommand query)
         {
@@ -373,7 +373,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns results as a desired type object.
+        /// Executes a sql select command and returns results as a desired type object.
         /// </summary>
         public override T GetObject<T>(IDbCommand query)
         {
@@ -459,7 +459,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Executes a sql select Command and returns results as a list of desired type objects.
+        /// Executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         public override List<T> GetObjectList<T>(IDbCommand query)
         {
@@ -526,13 +526,13 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public Task<int> ExecuteQueryAsync(string query)
         {
-            SqlCommand Command = null;
+            SqlCommand command = null;
 
             try
             {
                 GetConnection();
-                Command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
-                return Task.Run(() => { return Command.ExecuteNonQuery(); });
+                command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
+                return Task.Run(() => { return command.ExecuteNonQuery(); });
             }
             catch (SqlException ex)
             {
@@ -548,7 +548,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql Command and returns affected row count.
+        /// Asynchronously executes a sql command and returns affected row count.
         /// </summary>
         public Task<int> ExecuteQueryAsync(IDbCommand query)
         {
@@ -582,8 +582,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
-                return Task.Run(() => { adap.Fill(dt); return dt; });
+                SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
+                return Task.Run(() => { adapter.Fill(dt); return dt; });
             }
             catch (SqlException ex)
             {
@@ -599,20 +599,20 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a data table object.
+        /// Asynchronously executes a sql select command and returns results as a data table object.
         /// </summary>
         public Task<DataTable> ExecuteQueryDataTableAsync(IDbCommand query)
         {
             DataTable dt = new DataTable();
-            SqlCommand Command = query as SqlCommand;
+            SqlCommand command = query as SqlCommand;
 
             try
             {
                 GetConnection();
                 query.Transaction = tran;
                 query.Connection = myCon;
-                SqlDataAdapter adap = new SqlDataAdapter(Command);
-                return Task.Run(() => { adap.Fill(dt); return dt; });
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(dt); return dt; });
             }
             catch (SqlException ex)
             {;
@@ -635,8 +635,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
-                return Task.Run(() => { adap.Fill(table); return table; });
+                SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
+                return Task.Run(() => { adapter.Fill(table); return table; });
             }
             catch (SqlException ex)
             {
@@ -652,19 +652,19 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and fills a dataset object.
+        /// Asynchronously executes a sql select command and fills a dataset object.
         /// </summary>
         public Task FillObjectAsync(DataTable table, IDbCommand query)
         {
-            SqlCommand Command = query as SqlCommand;
+            SqlCommand command = query as SqlCommand;
 
             try
             {
                 GetConnection();
                 query.Transaction = tran;
                 query.Connection = myCon;
-                SqlDataAdapter adap = new SqlDataAdapter(Command);
-                return Task.Run(() => { adap.Fill(table); return table; });
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(table); return table; });
             }
             catch (SqlException ex)
             {
@@ -687,8 +687,8 @@ namespace ProjectBaseCore.Database
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
-                return Task.Run(() => { adap.Fill(set, table); });
+                SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction));
+                return Task.Run(() => { adapter.Fill(set, table); });
             }
             catch (SqlException ex)
             {
@@ -704,19 +704,19 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and fills a data table object.
+        /// Asynchronously executes a sql select command and fills a data table object.
         /// </summary>
         public Task FillObjectAsync(DataSet set, string table, IDbCommand query)
         {
             query.Connection = myCon;
             query.Transaction = tran;
-            SqlCommand Command = query as SqlCommand;
+            SqlCommand command = query as SqlCommand;
 
             try
             {
                 GetConnection();
-                SqlDataAdapter adap = new SqlDataAdapter(Command);
-                return Task.Run(() => { adap.Fill(set, table); });
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                return Task.Run(() => { adapter.Fill(set, table); });
             }
             catch (SqlException ex)
             {
@@ -754,7 +754,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns a data reader object.
+        /// Asynchronously executes a sql select command and returns a data reader object.
         /// </summary>
         public Task<IDataReader> GetDataReaderAsync(IDbCommand query)
         {
@@ -822,7 +822,7 @@ namespace ProjectBaseCore.Database
             });
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a desired type object.
+        /// Asynchronously executes a sql select command and returns results as a desired type object.
         /// </summary>
         public Task<T> GetObjectAsync<T>(IDbCommand query)
         {
@@ -919,7 +919,7 @@ namespace ProjectBaseCore.Database
             });
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a list of desired type objects.
+        /// Asynchronously executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         public Task<List<T>> GetObjectListAsync<T>(IDbCommand query)
         {
@@ -974,12 +974,12 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public Task<object> GetSingleValueAsync(string query)
         {
-            SqlCommand Command = null;
+            SqlCommand command = null;
             try
             {
                 GetConnection();
-                Command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
-                return Task.Run(() => { return Command.ExecuteScalar(); });
+                command = new SqlCommand(query, myCon as SqlConnection, tran as SqlTransaction);
+                return Task.Run(() => { return command.ExecuteScalar(); });
             }
             catch (SqlException ex)
             {
@@ -995,7 +995,7 @@ namespace ProjectBaseCore.Database
             }
         }
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results result as a single value.
+        /// Asynchronously executes a sql select command and returns results result as a single value.
         /// </summary>
         public Task<object> GetSingleValueAsync(IDbCommand query)
         {

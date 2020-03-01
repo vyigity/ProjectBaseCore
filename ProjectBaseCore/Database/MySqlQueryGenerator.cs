@@ -17,7 +17,7 @@ namespace ProjectBaseCore.Database
         List<MySqlParameter> DataParameters;
         List<MySqlParameter> FilterParameters;
         bool isFilled = false;
-        MySqlCommand Command = new MySqlCommand();
+        MySqlCommand command = new MySqlCommand();
 
         public MySqlQueryGenerator() : base('@')
         {
@@ -231,7 +231,7 @@ namespace ProjectBaseCore.Database
         /// </summary>
         public override object GetParameterValue(string parameterName)
         {
-            foreach (MySqlParameter item in Command.Parameters)
+            foreach (MySqlParameter item in command.Parameters)
             {
                 if (item.ParameterName == parameterName)
                 {
@@ -242,7 +242,7 @@ namespace ProjectBaseCore.Database
             throw new KeyNotFoundException("Key not found.");
         }
         /// <summary>
-        /// Returns generated insert Command.
+        /// Returns generated insert command.
         /// </summary>
         public override IDbCommand GetInsertCommand()
         {
@@ -261,7 +261,7 @@ namespace ProjectBaseCore.Database
                     vString.Append(param.ParameterName);
                     vString.Append(",");
 
-                    Command.Parameters.Add(param);
+                    command.Parameters.Add(param);
                 }
 
                 dString.Remove(dString.Length - 1, 1);
@@ -276,15 +276,15 @@ namespace ProjectBaseCore.Database
                 bString.Append(" VALUES ");
                 bString.Append(vString);
 
-                Command.CommandText = bString.ToString();
+                command.CommandText = bString.ToString();
             }
 
             isFilled = true;
 
-            return Command;
+            return command;
         }
         /// <summary>
-        /// Returns generated update Command.
+        /// Returns generated update command.
         /// </summary>
         public override IDbCommand GetUpdateCommand()
         {
@@ -302,7 +302,7 @@ namespace ProjectBaseCore.Database
                     bString.Append(param.ParameterName);
                     bString.Append(",");
 
-                    Command.Parameters.Add(param);
+                    command.Parameters.Add(param);
                 }
 
                 bString.Remove(bString.Length - 1, 1);
@@ -315,18 +315,18 @@ namespace ProjectBaseCore.Database
 
                 foreach (MySqlParameter param in FilterParameters)
                 {
-                    Command.Parameters.Add(param);
+                    command.Parameters.Add(param);
                 }
 
-                Command.CommandText = bString.ToString();
+                command.CommandText = bString.ToString();
             }
 
             isFilled = true;
 
-            return Command;
+            return command;
         }
         /// <summary>
-        /// Returns generated general Command.
+        /// Returns generated general command.
         /// </summary>
         public override IDbCommand GetSelectCommandBasic()
         {
@@ -342,7 +342,7 @@ namespace ProjectBaseCore.Database
 
                 foreach (MySqlParameter param in FilterParameters)
                 {
-                    Command.Parameters.Add(param);
+                    command.Parameters.Add(param);
                 }
 
                 bString.Append(" ");
@@ -351,15 +351,15 @@ namespace ProjectBaseCore.Database
                     bString.Append(GetPreparedCommandString(SelectTail, CommandStringType.Tail));
 
 
-                Command.CommandText = bString.ToString();
+                command.CommandText = bString.ToString();
             }
 
             isFilled = true;
 
-            return Command;
+            return command;
         }
         /// <summary>
-        /// Returns generated procedure Command.
+        /// Returns generated procedure command.
         /// </summary>
         public override IDbCommand GetProcedure()
         {
@@ -367,16 +367,16 @@ namespace ProjectBaseCore.Database
             {
                 foreach (MySqlParameter param in DataParameters)
                 {
-                    Command.Parameters.Add(param);
+                    command.Parameters.Add(param);
                 }
 
-                Command.CommandText = ProcedureName;
-                Command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandText = ProcedureName;
+                command.CommandType = System.Data.CommandType.StoredProcedure;
             }
 
             isFilled = true;
 
-            return Command;
+            return command;
         }
         /// <summary>
         /// Clears all query generator instance.
@@ -393,7 +393,7 @@ namespace ProjectBaseCore.Database
             FilterText = null;
             SelectTail = null;
             ProcedureName = null;
-            Command = new MySqlCommand();
+            command = new MySqlCommand();
             isFilled = false;
         }
     }

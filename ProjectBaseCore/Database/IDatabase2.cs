@@ -42,7 +42,7 @@ namespace ProjectBaseCore.Database
         int ExecuteQuery(string query);
 
         /// <summary>
-        /// Executes a sql Command and returns affected row count.
+        /// Executes a sql command and returns affected row count.
         /// </summary>
         int ExecuteQuery(IDbCommand query);
 
@@ -52,7 +52,7 @@ namespace ProjectBaseCore.Database
         DataTable ExecuteQueryDataTable(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results as a data table object.
+        /// Executes a sql select command and returns results as a data table object.
         /// </summary>
         DataTable ExecuteQueryDataTable(IDbCommand query);
 
@@ -62,7 +62,7 @@ namespace ProjectBaseCore.Database
         void FillObject(DataTable table, string query);
 
         /// <summary>
-        /// Executes a sql select Command and fills a data table object.
+        /// Executes a sql select command and fills a data table object.
         /// </summary>
         void FillObject(DataTable table, IDbCommand query);
 
@@ -72,7 +72,7 @@ namespace ProjectBaseCore.Database
         void FillObject(DataSet set, string table, string query);
 
         /// <summary>
-        /// Executes a sql select Command and fills a dataset object.
+        /// Executes a sql select command and fills a dataset object.
         /// </summary>
         void FillObject(DataSet set, string table, IDbCommand query);
 
@@ -87,7 +87,7 @@ namespace ProjectBaseCore.Database
         IDataReader GetDataReader(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns a data reader object.
+        /// Executes a sql select command and returns a data reader object.
         /// </summary>
         IDataReader GetDataReader(IDbCommand query);
 
@@ -97,7 +97,7 @@ namespace ProjectBaseCore.Database
         T GetObject<T>(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results as a desired type object.
+        /// Executes a sql select command and returns results as a desired type object.
         /// </summary>
         T GetObject<T>(IDbCommand query);
 
@@ -107,7 +107,7 @@ namespace ProjectBaseCore.Database
         List<T> GetObjectList<T>(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results as a list of desired type objects.
+        /// Executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         List<T> GetObjectList<T>(IDbCommand query);
 
@@ -117,7 +117,7 @@ namespace ProjectBaseCore.Database
         object GetSingleValue(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results result as a single value.
+        /// Executes a sql select command and returns results result as a single value.
         /// </summary>
         object GetSingleValue(IDbCommand query);
 

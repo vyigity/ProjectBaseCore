@@ -43,7 +43,7 @@ namespace ProjectBaseCore.Database
         Task<int> ExecuteQueryAsync(string query);
 
         /// <summary>
-        /// Asynchronously executes a sql Command and returns affected row count.
+        /// Asynchronously executes a sql command and returns affected row count.
         /// </summary>
         Task<int> ExecuteQueryAsync(IDbCommand query);
 
@@ -53,7 +53,7 @@ namespace ProjectBaseCore.Database
         Task<DataTable> ExecuteQueryDataTableAsync(string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a data table object.
+        /// Asynchronously executes a sql select command and returns results as a data table object.
         /// </summary>
         Task<DataTable> ExecuteQueryDataTableAsync(IDbCommand query);
 
@@ -63,7 +63,7 @@ namespace ProjectBaseCore.Database
         Task FillObjectAsync(DataTable table, string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and fills a data table object.
+        /// Asynchronously executes a sql select command and fills a data table object.
         /// </summary>
         Task FillObjectAsync(DataTable table, IDbCommand query);
 
@@ -73,7 +73,7 @@ namespace ProjectBaseCore.Database
         Task FillObjectAsync(DataSet set, string table, string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and fills a dataset object.
+        /// Asynchronously executes a sql select command and fills a dataset object.
         /// </summary>
         Task FillObjectAsync(DataSet set, string table, IDbCommand query);
 
@@ -83,7 +83,7 @@ namespace ProjectBaseCore.Database
         Task<IDataReader> GetDataReaderAsync(string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns a data reader object.
+        /// Asynchronously executes a sql select command and returns a data reader object.
         /// </summary>
         Task<IDataReader> GetDataReaderAsync(IDbCommand query);
 
@@ -93,7 +93,7 @@ namespace ProjectBaseCore.Database
         Task<T> GetObjectAsync<T>(string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a desired type object.
+        /// Asynchronously executes a sql select command and returns results as a desired type object.
         /// </summary>
         Task<T> GetObjectAsync<T>(IDbCommand query);
 
@@ -103,7 +103,7 @@ namespace ProjectBaseCore.Database
         Task<List<T>> GetObjectListAsync<T>(string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results as a list of desired type objects.
+        /// Asynchronously executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         Task<List<T>> GetObjectListAsync<T>(IDbCommand query);
 
@@ -113,7 +113,7 @@ namespace ProjectBaseCore.Database
         Task<object> GetSingleValueAsync(string query);
 
         /// <summary>
-        /// Asynchronously executes a sql select Command and returns results result as a single value.
+        /// Asynchronously executes a sql select command and returns results result as a single value.
         /// </summary>
         Task<object> GetSingleValueAsync(IDbCommand query);
 

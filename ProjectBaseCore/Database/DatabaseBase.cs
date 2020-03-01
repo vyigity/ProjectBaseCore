@@ -139,7 +139,7 @@ namespace ProjectBaseCore.Database
         abstract public int ExecuteQuery(string query);
 
         /// <summary>
-        /// Executes a sql Command and returns affected row count.
+        /// Executes a sql command and returns affected row count.
         /// </summary>
         abstract public int ExecuteQuery(IDbCommand query);
 
@@ -149,7 +149,7 @@ namespace ProjectBaseCore.Database
         abstract public DataTable ExecuteQueryDataTable(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results as a data table object.
+        /// Executes a sql select command and returns results as a data table object.
         /// </summary>
         abstract public DataTable ExecuteQueryDataTable(IDbCommand query);
 
@@ -159,7 +159,7 @@ namespace ProjectBaseCore.Database
         abstract public void FillObject(DataTable table, string query);
 
         /// <summary>
-        /// Executes a sql select Command and fills a data table object.
+        /// Executes a sql select command and fills a data table object.
         /// </summary>
         abstract public void FillObject(DataTable table, IDbCommand query);
 
@@ -169,7 +169,7 @@ namespace ProjectBaseCore.Database
         abstract public void FillObject(DataSet set, string table, string query);
 
         /// <summary>
-        /// Executes a sql select Command and fills a dataset object.
+        /// Executes a sql select command and fills a dataset object.
         /// </summary>
         abstract public void FillObject(DataSet set, string table, IDbCommand query);
 
@@ -179,7 +179,7 @@ namespace ProjectBaseCore.Database
         abstract public IDataReader GetDataReader(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns a data reader object.
+        /// Executes a sql select command and returns a data reader object.
         /// </summary>
         abstract public IDataReader GetDataReader(IDbCommand query);
 
@@ -189,7 +189,7 @@ namespace ProjectBaseCore.Database
         abstract public T GetObject<T>(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results as a desired type object.
+        /// Executes a sql select command and returns results as a desired type object.
         /// </summary>
         abstract public T GetObject<T>(IDbCommand query);
 
@@ -199,7 +199,7 @@ namespace ProjectBaseCore.Database
         abstract public List<T> GetObjectList<T>(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results as a list of desired type objects.
+        /// Executes a sql select command and returns results as a list of desired type objects.
         /// </summary>
         abstract public List<T> GetObjectList<T>(IDbCommand query);
 
@@ -209,7 +209,7 @@ namespace ProjectBaseCore.Database
         abstract public object GetSingleValue(string query);
 
         /// <summary>
-        /// Executes a sql select Command and returns results result as a single value.
+        /// Executes a sql select command and returns results result as a single value.
         /// </summary>
         abstract public object GetSingleValue(IDbCommand query);
 

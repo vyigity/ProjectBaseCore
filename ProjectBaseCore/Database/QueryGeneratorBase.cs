@@ -136,19 +136,19 @@ namespace ProjectBaseCore.Database
         /// </summary>
         abstract public object GetParameterValue(string parameterName);
         /// <summary>
-        /// Returns generated insert Command.
+        /// Returns generated insert command.
         /// </summary>
         abstract public IDbCommand GetInsertCommand();
         /// <summary>
-        /// Returns generated update Command.
+        /// Returns generated update command.
         /// </summary>
         abstract public IDbCommand GetUpdateCommand();
         /// <summary>
-        /// Returns generated general Command.
+        /// Returns generated general command.
         /// </summary>
         abstract public IDbCommand GetSelectCommandBasic();
         /// <summary>
-        /// Returns generated procedure Command.
+        /// Returns generated procedure command.
         /// </summary>
         abstract public IDbCommand GetProcedure();
         /// <summary>
