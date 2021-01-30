@@ -104,6 +104,90 @@ namespace ProjectBaseCore.Database
             else
                 throw new Exception("Provider is not recognized.");
         }
+        /// <summary>
+        /// Instantiates a new encapsulated database interaction object according to provider.
+        /// </summary>
+        public static IDatabase2 GetDbObject(Provider provider)
+        {
+            if (provider == Provider.OracleManagedDataAccess)
+            {
+                return new OracleManagedDatabase2();
+            }
+            else if (provider == Provider.SqlServer)
+            {
+                return new SqlDatabase2();
+            }
+            else if (provider == Provider.MySql)
+            {
+                return new MySqlDatabase2();
+            }
+            else if (provider == Provider.OleDb)
+            {
+                return new OleDbDatabase2();
+            }
+            else if (provider == Provider.Npgsql)
+            {
+                return new NpgsqlDatabase2();
+            }
+            else
+                throw new Exception("Provider is not recognized.");
+        }
+        /// <summary>
+        /// Instantiates a new encapsulated database interaction object according to provider and database setting.
+        /// </summary>
+        public static IDatabase2 GetDbObject(Provider provider, DbSettings setting)
+        {
+            if (provider == Provider.OracleManagedDataAccess)
+            {
+                return new OracleManagedDatabase2(setting);
+            }
+            else if (provider == Provider.SqlServer)
+            {
+                return new SqlDatabase2(setting);
+            }
+            else if (provider == Provider.MySql)
+            {
+                return new MySqlDatabase2(setting);
+            }
+            else if (provider == Provider.OleDb)
+            {
+                return new OleDbDatabase2(setting);
+            }
+            else if (provider == Provider.Npgsql)
+            {
+                return new NpgsqlDatabase2(setting);
+            }
+            else
+                throw new Exception("Provider is not recognized.");
+        }
+        /// <summary>
+        /// Instantiates a new encapsulated database interaction object according to provider, database setting and transaction isolation.
+        /// </summary>
+        public static IDatabase2 GetDbObject(Provider provider, DbSettings setting, IsolationLevel isolation)
+        {
+            if (provider == Provider.OracleManagedDataAccess)
+            {
+                return new OracleManagedDatabase2(setting, isolation);
+            }
+            else if (provider == Provider.SqlServer)
+            {
+                return new SqlDatabase2(setting, isolation);
+            }
+            else if (provider == Provider.MySql)
+            {
+                return new MySqlDatabase2(setting, isolation);
+            }
+            else if (provider == Provider.OleDb)
+            {
+                return new OleDbDatabase2(setting, isolation);
+            }
+            else if (provider == Provider.Npgsql)
+            {
+                return new NpgsqlDatabase2(setting, isolation);
+            }
+            else
+                throw new Exception("Provider is not recognized.");
+        }
 
         /// <summary>
         /// Instantiates a new encapsulated asynchronous database interaction object.
@@ -125,6 +209,27 @@ namespace ProjectBaseCore.Database
         public static IDatabaseAsync2 GetDbObjectAsync(DbSettings setting, IsolationLevel isolation)
         {
             return GetDbObject(setting, isolation) as IDatabaseAsync2;
+        }
+        /// <summary>
+        /// Instantiates a new encapsulated asynchronous database interaction object according to provider.
+        /// </summary>
+        public static IDatabaseAsync2 GetDbObjectAsync(Provider provider)
+        {
+            return GetDbObject(provider) as IDatabaseAsync2;
+        }
+        /// <summary>
+        /// Instantiates a new encapsulated asynchronous database interaction object according to provider and database setting.
+        /// </summary>
+        public static IDatabaseAsync2 GetDbObjectAsync(Provider provider, DbSettings setting)
+        {
+            return GetDbObject(provider, setting) as IDatabaseAsync2;
+        }
+        /// <summary>
+        /// Instantiates a new encapsulated asynchronous database interaction object according to provider, database setting and transaction isolation.
+        /// </summary>
+        public static IDatabaseAsync2 GetDbObjectAsync(Provider provider, DbSettings setting, IsolationLevel isolation)
+        {
+            return GetDbObject(provider, setting, isolation) as IDatabaseAsync2;
         }
     }
 }

@@ -36,6 +36,30 @@ namespace ProjectBaseCore.Database
             else
                 throw new Exception("Provider is not recognized.");
         }
+        /// <summary>
+        /// Instantiates a new encapsulated QueryGenerator object with provider.
+        /// </summary>
+        public static IQueryGenerator GetDbObject(Provider provider)
+        {
+            if (provider == Provider.OracleManagedDataAccess)
+            {
+                return new OracleManagedQueryGenerator();
+            }
+            else if (provider == Provider.SqlServer)
+            {
+                return new SqlQueryGenerator();
+            }
+            else if (provider == Provider.MySql)
+            {
+                return new MySqlQueryGenerator();
+            }
+            else if (provider == Provider.Npgsql)
+            {
+                return new NpgsqlQueryGenerator();
+            }
+            else
+                throw new Exception("Provider is not recognized.");
+        }
 
         /// <summary>
         /// Instantiates a new encapsulated QueryGenerator object with parameter processing mode.
@@ -57,6 +81,30 @@ namespace ProjectBaseCore.Database
                 return new MySqlQueryGenerator(ParameterProcessingMode);
             }
             else if (providerName == "Npgsql")
+            {
+                return new NpgsqlQueryGenerator(ParameterProcessingMode);
+            }
+            else
+                throw new Exception("Provider is not recognized.");
+        }
+        /// <summary>
+        /// Instantiates a new encapsulated QueryGenerator object with provider and parameter processing mode.
+        /// </summary>
+        public static IQueryGenerator GetDbObject(Provider provider, ParameterMode ParameterProcessingMode)
+        {
+            if (provider == Provider.OracleManagedDataAccess)
+            {
+                return new OracleManagedQueryGenerator(ParameterProcessingMode);
+            }
+            else if (provider == Provider.SqlServer)
+            {
+                return new SqlQueryGenerator(ParameterProcessingMode);
+            }
+            else if (provider == Provider.MySql)
+            {
+                return new MySqlQueryGenerator(ParameterProcessingMode);
+            }
+            else if (provider == Provider.Npgsql)
             {
                 return new NpgsqlQueryGenerator(ParameterProcessingMode);
             }

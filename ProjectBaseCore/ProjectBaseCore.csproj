@@ -12,7 +12,7 @@
     <PackageIcon>PBicon.png</PackageIcon>
     <PackageIconUrl />
     <PackageTags>DataAccessLayer Utility DAL VeriErişimKatmanı YazılımDestek</PackageTags>
-    <PackageReleaseNotes>Byte array or string representation of GUID is now supported. For example, RAW data type can be loaded to an object that has corresponding Guid typed property. In addition, Util's GetPropety functions are now supported byte[], string and Guid convertions.</PackageReleaseNotes>
+    <PackageReleaseNotes>Byte array or string representation of GUID is now supported. For example, Oracle RAW data type can be loaded to an object that has corresponding Guid typed property. In addition, Util's GetProperty functions are now supported byte[], string and Guid convertions.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <AssemblyVersion>1.0.3.0</AssemblyVersion>
