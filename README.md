@@ -14,6 +14,18 @@ PB supports asynchronous programming.
 
 Also PB supports low level object mapping features.
 
+If you use appsetting.json file, file must include following sections:
+
+DefaultDb: Connectionstring name to connect. Connection string is placed under ConnectionStrings section. For example: Context.
+
+{DefaultDb}ProviderName: Provider to use. For example, section name can be ContextProviderName for Context named connection string. Can be set followings:
+
+ * Oracle.ManagedDataAccess.Client
+ * System.Data.SqlClient
+ * MySql.Data.MySqlClient
+ * System.Data.OleDb
+ * Npgsql
+
 For introduction:
 
 http://vyigity.blogspot.com.tr/2017/10/veri-erisim-katmanna-giris-introduction.html
