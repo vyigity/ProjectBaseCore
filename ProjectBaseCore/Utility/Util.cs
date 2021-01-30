@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 
 namespace ProjectBaseCore.Utility
 {
-    public struct ByteFile { public string FileName; public byte[] Data;}
+    public struct ByteFile { public string FileName; public byte[] Data; }
 
     /// <summary>
     /// Includes beneficial util functions.
@@ -99,7 +99,7 @@ namespace ProjectBaseCore.Utility
         /// Serializes a object to XML
         /// </summary>
         public static string SerializeObjectXml<T>(T obj)
-        {          
+        {
             StringWriter swriter = new StringWriter();
             XmlSerializer sxml = new XmlSerializer(typeof(T));
             sxml.Serialize(swriter, obj);
@@ -168,7 +168,37 @@ namespace ProjectBaseCore.Utility
             if (IsNull(obj))
                 return default(T);
             else
+            {
+                if (obj.GetType() == typeof(T))
+                {
+                    return (T)obj;
+                }
+
+                if (typeof(T) == typeof(Guid))
+                {
+                    if (obj is Byte[])
+                    {
+                        return (T)(object)new Guid(obj as Byte[]);
+                    }
+                    else
+                    {
+                        return (T)(object)Guid.Parse(obj.ToString());
+                    }
+                }
+                else if (obj is Guid)
+                {
+                    if (typeof(T) == typeof(Byte[]))
+                    {
+                        return (T)(object)((Guid)obj).ToByteArray();
+                    }
+                    else
+                    {
+                        return (T)(object)((Guid)obj).ToString();
+                    }
+                }
+
                 return (T)Convert.ChangeType(obj, typeof(T));
+            }
         }
         /// <summary>
         /// Converts a object data type to another according to T. If value is null, returns given default value.
@@ -178,25 +208,83 @@ namespace ProjectBaseCore.Utility
             if (IsNull(obj))
                 return defaultValue;
             else
+            {
+                if (obj.GetType() == typeof(T))
+                {
+                    return (T)obj;
+                }
+
+                if (typeof(T) == typeof(Guid))
+                {
+                    if (obj is Byte[])
+                    {
+                        return (T)(object)new Guid(obj as Byte[]);
+                    }
+                    else
+                    {
+                        return (T)(object)Guid.Parse(obj.ToString());
+                    }
+                }
+                else if (obj is Guid)
+                {
+                    if (typeof(T) == typeof(Byte[]))
+                    {
+                        return (T)(object)((Guid)obj).ToByteArray();
+                    }
+                    else
+                    {
+                        return (T)(object)((Guid)obj).ToString();
+                    }
+                }
+
                 return (T)Convert.ChangeType(obj, typeof(T));
+            }
         }
         /// <summary>
         /// Converts a object data type to another according to given object type.
         /// </summary>
         public static object GetProperty(object obj, Type objectType)
         {
-            Type  objectTypeTmp = null;
+            Type objectTypeTmp = null;
 
             if (IsNull(obj))
                 return null;
             else
             {
+                if (obj.GetType() == objectType)
+                {
+                    return obj;
+                }
+
                 if (Nullable.GetUnderlyingType(objectType) != null)
                 {
                     objectTypeTmp = Nullable.GetUnderlyingType(objectType);
                 }
                 else
                     objectTypeTmp = objectType;
+
+                if (objectTypeTmp == typeof(Guid))
+                {
+                    if (obj is Byte[])
+                    {
+                        return new Guid(obj as Byte[]);
+                    }
+                    else
+                    {
+                        return Guid.Parse(obj.ToString());
+                    }
+                }
+                else if (obj is Guid)
+                {
+                    if (objectTypeTmp == typeof(Byte[]))
+                    {
+                        return ((Guid)obj).ToByteArray();
+                    }
+                    else
+                    {
+                        return ((Guid)obj).ToString();
+                    }
+                }
 
                 return Convert.ChangeType(obj, objectTypeTmp);
             }
@@ -204,14 +292,19 @@ namespace ProjectBaseCore.Utility
         /// <summary>
         /// Converts a object data type to another according to given object type. If value is null, returns given default value.
         /// </summary>
-        public static object GetProperty(object Obj, Type objectType, object defaultValue)
+        public static object GetProperty(object obj, Type objectType, object defaultValue)
         {
             Type objectTypeTmp = null;
 
-            if (IsNull(Obj))
+            if (IsNull(obj))
                 return defaultValue;
             else
             {
+                if (obj.GetType() == objectType)
+                {
+                    return obj;
+                }
+
                 if (Nullable.GetUnderlyingType(objectType) != null)
                 {
                     objectTypeTmp = Nullable.GetUnderlyingType(objectType);
@@ -219,7 +312,19 @@ namespace ProjectBaseCore.Utility
                 else
                     objectTypeTmp = objectType;
 
-                return Convert.ChangeType(Obj, objectTypeTmp);
+                if (objectTypeTmp == typeof(Guid))
+                {
+                    if (obj is Byte[])
+                    {
+                        return new Guid(obj as Byte[]);
+                    }
+                    else
+                    {
+                        return Guid.Parse(obj.ToString());
+                    }
+                }
+
+                return Convert.ChangeType(obj, objectTypeTmp);
             }
         }
         /// <summary>
@@ -232,7 +337,37 @@ namespace ProjectBaseCore.Utility
                 if (IsNull(obj))
                     return null;
                 else
+                {
+                    if (typeof(T) == obj.GetType())
+                    {
+                        return (T)obj;
+                    }
+
+                    if (typeof(T) == typeof(Guid))
+                    {
+                        if (obj is Byte[])
+                        {
+                            return (Nullable<T>)(object)new Guid(obj as Byte[]);
+                        }
+                        else
+                        {
+                            return (Nullable<T>)(object)Guid.Parse(obj.ToString());
+                        }
+                    }
+                    else if (obj is Guid)
+                    {
+                        if (typeof(T) == typeof(Byte[]))
+                        {
+                            return (T)(object)((Guid)obj).ToByteArray();
+                        }
+                        else
+                        {
+                            return (T)(object)((Guid)obj).ToString();
+                        }
+                    }
+
                     return (Nullable<T>)Convert.ChangeType(obj, typeof(T));
+                }
             }
             catch
             {
@@ -414,7 +549,7 @@ namespace ProjectBaseCore.Utility
                 }
             }
 
-            return to;            
+            return to;
         }
         /// <summary>
         /// Generates a dynamic object from a object.
@@ -430,7 +565,7 @@ namespace ProjectBaseCore.Utility
                 dic.Add(to_property.Name, to_property.GetValue(convertObject));
             }
 
-            if(extraProperty != null)
+            if (extraProperty != null)
                 foreach (var val in extraProperty)
                 {
                     int i = 0;
@@ -466,7 +601,7 @@ namespace ProjectBaseCore.Utility
                         {
                             if (to_property.GetValue(to) == null)
                             {
-                               newProperty = Activator.CreateInstance(to_property.PropertyType);
+                                newProperty = Activator.CreateInstance(to_property.PropertyType);
                             }
 
                             CopyObjectDeeper(from_property, newProperty, to_property.PropertyType);
@@ -534,7 +669,7 @@ namespace ProjectBaseCore.Utility
         {
             if (!removeNameSpace)
             {
-                return Assembly.Load(assemblyName).GetTypes().ToList().Where(t => t.Namespace == nameSpace && t.GetInterfaces().ToList().Exists(r=>interfaces.Contains(r.Name))).Select(r => r.FullName).ToList();
+                return Assembly.Load(assemblyName).GetTypes().ToList().Where(t => t.Namespace == nameSpace && t.GetInterfaces().ToList().Exists(r => interfaces.Contains(r.Name))).Select(r => r.FullName).ToList();
             }
             else
             {
@@ -621,7 +756,7 @@ namespace ProjectBaseCore.Utility
                         {
                             st.Write(item.Data, 0, item.Data.Length);
                         }
-                    }                 
+                    }
                 }
 
                 return mst.ToArray();
