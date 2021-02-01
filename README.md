@@ -1,18 +1,18 @@
 # ProjectBaseCore
 
-ProjectBase (PB) is a Utility and Data Access library. PB designed with a database independent interface oriented approach to ensure extentibility and reliablity. PB's codes can be changed or manipulated easily.
+ProjectBaseCore (PBCore) is a Utility and Data Access library. PBCore designed with a database independent interface oriented approach to ensure extentibility and reliablity. PBCore's codes can be changed or manipulated easily.
 
-PB has 3 type of data access: 
+PBCore has 3 type of data access: 
 
-* Automatic Connection Management: Using single connection object and while executing a command, connection is opened and closed automatically.
-* Manuel Connection Management: Using single connection object and connection is opened and closed by developer manually.
-* Transaction Mode: PB supports PL/SQL type code writing of transactional processes. PB creates transactions and manages them automatically.
+* Automatic Connection Management: Uses single connection object and while executing a command, connection is opened and closed automatically.
+* Manuel Connection Management: Uses single connection object and connection is opened and closed by developer manually.
+* Transaction Mode: PBCore supports PL/SQL type code writing of transactional processes. PBCore creates transactions and manages them automatically.
 
-PB currently supports Oracle (Managed Provider), SQL Server databases and OleDb. PB supports MySql provider with v2.0.0 and PostgreSQL with v3.0.0.
+PBCore currently supports Oracle (Managed Provider), SQL Server, OleDb, MySql and PostgreSQL.
 
-PB supports asynchronous programming.
+PBCore supports asynchronous programming.
 
-Also PB supports low level object mapping features.
+Also PBCore supports low level object mapping features.
 
 If you use appsetting.json file, file must include following sections:
 
