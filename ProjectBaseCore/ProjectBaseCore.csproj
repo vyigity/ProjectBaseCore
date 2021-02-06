@@ -6,15 +6,15 @@
     <Company>vyigity</Company>
     <Copyright>vyigity</Copyright>
     <PackageId>vyigity.ProjectBaseCore</PackageId>
-    <Description>ProjectBase is a .NET toolkit for rapid application development. This project includes basic, extendible, interface oriented low level data access and utility codes. Aim of this project is to start a software project in a immediate and reliable way using database independent code interfaces and PL/SQL like transaction management. PB supports Oracle (Managed Provider), SqlServer, MySql, Oledb and PostgreSQL. PB supports asynchronous programming.</Description>
+    <Description>ProjectBaseCore is a .NET toolkit for rapid application development. This project includes basic, extendible, interface oriented low level data access and utility codes. Aim of this project is to start a software project in a immediate and reliable way using database independent code interfaces and PL/SQL like transaction management. PB supports Oracle (Managed Provider), SqlServer, MySql, Oledb and PostgreSQL. PB supports asynchronous programming.</Description>
     <RepositoryUrl>https://github.com/vyigity/ProjectBaseCore</RepositoryUrl>
     <PackageProjectUrl>https://github.com/vyigity/ProjectBaseCore</PackageProjectUrl>
     <PackageIcon>PBicon.png</PackageIcon>
     <PackageIconUrl />
     <PackageTags>DataAccessLayer Utility DAL VeriErişimKatmanı YazılımDestek</PackageTags>
     <PackageReleaseNotes>This version is not compatible with version 1.x. 
-DatabaseFactory and QueryGenerator factory must be injected to use with version 2.x and later. 
-Connection string can be set on DatabaseFactory.</PackageReleaseNotes>
+DatabaseFactory and QueryGeneratorFactory must be injected to use with version 2.x and later. 
+Connection string parameter can be set on DatabaseFactory with version 2.x and later.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
