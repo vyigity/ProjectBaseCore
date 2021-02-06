@@ -14,7 +14,7 @@ namespace ProjectBaseCore.Database
     public class DatabaseFactory: IDatabaseFactory
     {
         private readonly IConfiguration configuration;
-        public DatabaseFactory (IConfiguration configuration )
+        public DatabaseFactory (IConfiguration configuration)
         {
             this.configuration = configuration;
         }
