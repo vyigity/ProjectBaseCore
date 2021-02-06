@@ -26,6 +26,10 @@ If you use appsetting.json file, file must include following sections:
       * System.Data.OleDb
       * Npgsql
 
+For Injection of ProjectBaseCore:
+
+https://vyigity.blogspot.com/2021/02/injecting-projectbasecore-in-net-core.html
+
 For introduction:
 
 http://vyigity.blogspot.com.tr/2017/10/veri-erisim-katmanna-giris-introduction.html
