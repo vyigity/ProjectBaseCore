@@ -1,4 +1,4 @@
-﻿using ProjectBaseCore.AppContext;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,14 +8,27 @@ using System.Threading.Tasks;
 
 namespace ProjectBaseCore.Database
 {
-    public static class QueryGeneratorFactory
+    public class QueryGeneratorFactory : IQueryGeneratorFactory
     {
+        private readonly IConfiguration configuration;
+        public QueryGeneratorFactory(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+        public string GetConnectionString()
+        {
+            return configuration.GetConnectionString(configuration.GetSection("DefaultDb").Value);
+        }
+        public string GetProviderName()
+        {
+            return configuration.GetSection(string.Format("{0}ProviderName", configuration.GetSection("DefaultDb").Value)).Value;
+        }
         /// <summary>
         /// Instantiates a new encapsulated QueryGenerator object.
         /// </summary>
-        public static IQueryGenerator GetDbObject()
+        public IQueryGenerator GetDbObject()
         {
-            string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
+            string providerName = GetProviderName();
 
             if (providerName == "Oracle.ManagedDataAccess.Client")
             {
@@ -39,7 +52,7 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new encapsulated QueryGenerator object with provider.
         /// </summary>
-        public static IQueryGenerator GetDbObject(Provider provider)
+        public IQueryGenerator GetDbObject(Provider provider)
         {
             if (provider == Provider.OracleManagedDataAccess)
             {
@@ -64,9 +77,9 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new encapsulated QueryGenerator object with parameter processing mode.
         /// </summary>
-        public static IQueryGenerator GetDbObject(ParameterMode ParameterProcessingMode)
+        public IQueryGenerator GetDbObject(ParameterMode ParameterProcessingMode)
         {
-            string providerName = AppContext2.AppSettings[string.Format("{0}ProviderName", AppContext2.DEFAULT_DB)];
+            string providerName = GetProviderName();
 
             if (providerName == "Oracle.ManagedDataAccess.Client")
             {
@@ -90,7 +103,7 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new encapsulated QueryGenerator object with provider and parameter processing mode.
         /// </summary>
-        public static IQueryGenerator GetDbObject(Provider provider, ParameterMode ParameterProcessingMode)
+        public IQueryGenerator GetDbObject(Provider provider, ParameterMode ParameterProcessingMode)
         {
             if (provider == Provider.OracleManagedDataAccess)
             {

@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using ProjectBaseCore.AppContext;
 using ProjectBaseCore.Utility;
 using System;
 using System.Collections.Generic;
@@ -18,15 +17,15 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public MySqlDatabase2() : base() { }
+        public MySqlDatabase2(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public MySqlDatabase2(DbSettings setting) : base(setting) { }
+        public MySqlDatabase2(string connectionString, DbSettings setting) : base(connectionString, setting) { }
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public MySqlDatabase2(DbSettings setting, IsolationLevel isolation) : base(setting, isolation) { }
+        public MySqlDatabase2(string connectionString, DbSettings setting, IsolationLevel isolation) : base(connectionString, setting, isolation) { }
         /// <summary>
         /// Executes a sql select query and returns results as a data table object.
         /// </summary>

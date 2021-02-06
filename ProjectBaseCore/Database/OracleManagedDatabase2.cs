@@ -14,15 +14,15 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public OracleManagedDatabase2() : base() { }
+        public OracleManagedDatabase2(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public OracleManagedDatabase2(DbSettings setting) : base(setting) { }
+        public OracleManagedDatabase2(string connectionString, DbSettings setting) : base(connectionString, setting) { }
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public OracleManagedDatabase2(DbSettings setting, IsolationLevel isolation) : base(setting, isolation) { }
+        public OracleManagedDatabase2(string connectionString, DbSettings setting, IsolationLevel isolation) : base(connectionString, setting, isolation) { }
         /// <summary>
         /// Executes a sql select query and returns results as a data table object.
         /// </summary>

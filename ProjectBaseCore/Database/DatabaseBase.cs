@@ -1,5 +1,4 @@
-﻿using ProjectBaseCore.AppContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -109,26 +108,26 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public DatabaseBase()
+        public DatabaseBase(string connectionString)
         {
-            ConnectionString = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
+            ConnectionString = connectionString;
         }
 
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public DatabaseBase(DbSettings setting)
+        public DatabaseBase(string connectionString, DbSettings setting)
         {
-            ConnectionString = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
+            ConnectionString = connectionString;
             this.Setting = setting;
         }
 
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public DatabaseBase(DbSettings setting, IsolationLevel isolation)
+        public DatabaseBase(string connectionString, DbSettings setting, IsolationLevel isolation)
         {
-            ConnectionString = AppContext2.GetConnectionString(AppContext2.DEFAULT_DB);
+            ConnectionString = connectionString;
             this.Setting = setting;
             this.isolation = isolation;
         }

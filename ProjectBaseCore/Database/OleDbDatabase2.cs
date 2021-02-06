@@ -1,5 +1,4 @@
-﻿using ProjectBaseCore.AppContext;
-using ProjectBaseCore.Utility;
+﻿using ProjectBaseCore.Utility;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,15 +17,15 @@ namespace ProjectBaseCore.Database
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public OleDbDatabase2() : base() { }
+        public OleDbDatabase2(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public OleDbDatabase2(DbSettings setting) : base(setting) { }
+        public OleDbDatabase2(string connectionString, DbSettings setting) : base(connectionString, setting) { }
         /// <summary>
         /// Instantiates a new database interaction object.
         /// </summary>
-        public OleDbDatabase2(DbSettings setting, IsolationLevel isolation) : base(setting, isolation) { }
+        public OleDbDatabase2(string connectionString, DbSettings setting, IsolationLevel isolation) : base(connectionString, setting, isolation) { }
         /// <summary>
         /// Executes a sql select query and returns results as a data table object.
         /// </summary>
