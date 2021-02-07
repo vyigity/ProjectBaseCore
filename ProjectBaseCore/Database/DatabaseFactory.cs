@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 namespace ProjectBaseCore.Database
 {
     public enum DbSettings { AutoConnectionManagement = 0, TransactionMode = 1, ManuelConnectionManagement = 2 }
-    public class DatabaseFactory: IDatabaseFactory
+    public class DatabaseFactory : IDatabaseFactory
     {
-        private readonly IConfiguration configuration;
-        public DatabaseFactory (IConfiguration configuration )
+        private readonly IConfiguration _configuration;
+        public DatabaseFactory(IConfiguration configuration)
         {
-            this.configuration = configuration;
+            _configuration = configuration;
         }
         public string GetConnectionString()
         {
-            return configuration.GetConnectionString(configuration.GetSection("DefaultDb").Value);
+            return _configuration.GetConnectionString(_configuration.GetSection("DefaultDb").Value);
         }
         public string GetProviderName()
         {
-            return configuration.GetSection(string.Format("{0}ProviderName", configuration.GetSection("DefaultDb").Value)).Value;
+            return _configuration.GetSection(string.Format("{0}ProviderName", _configuration.GetSection("DefaultDb").Value)).Value;
         }
         /// <summary>
         /// Instantiates a new encapsulated database interaction object.
