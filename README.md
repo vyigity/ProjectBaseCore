@@ -30,6 +30,10 @@ For Injection of ProjectBaseCore:
 
 https://vyigity.blogspot.com/2021/02/injecting-projectbasecore-in-net-core.html
 
+For Using ProjectBaseCore without Dependency Injection
+
+https://vyigity.blogspot.com/2021/02/using-projectbasecore-without-dependency-injection.html
+
 For introduction:
 
 http://vyigity.blogspot.com.tr/2017/10/veri-erisim-katmanna-giris-introduction.html
