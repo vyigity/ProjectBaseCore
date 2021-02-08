@@ -28,11 +28,11 @@ If you use appsetting.json file, file must include following sections:
 
 For Injection of ProjectBaseCore:
 
-https://www.yigityolcu.com/2021/02/injecting-projectbasecore-in-net-core.html
+http://www.yigityolcu.com/2021/02/injecting-projectbasecore-in-net-core.html
 
 For Using ProjectBaseCore without Dependency Injection
 
-https://www.yigityolcu.com/2021/02/using-projectbasecore-without-dependency-injection.html
+http://www.yigityolcu.com/2021/02/using-projectbasecore-without-dependency-injection.html
 
 For introduction:
 
