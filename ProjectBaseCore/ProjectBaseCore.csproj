@@ -27,7 +27,7 @@ Connection string parameter can be set on DatabaseFactory with version 2.x and l
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.2" />
     <PackageReference Include="MySql.Data" Version="8.0.21" />
-    <PackageReference Include="Npgsql" Version="4.1.3.1" />
+    <PackageReference Include="Npgsql" Version="4.1.13" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.180" />
     <PackageReference Include="System.AppContext" Version="4.3.0" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.0" />
