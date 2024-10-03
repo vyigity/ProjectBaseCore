@@ -31,7 +31,7 @@ Connection string parameter can be set on DatabaseFactory with version 2.x and l
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.180" />
     <PackageReference Include="System.AppContext" Version="4.3.0" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>
